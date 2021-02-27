@@ -4,7 +4,7 @@ package tictactoe;
  * This abstract class represents a general Tic-Tac-Toe player.
  *
  * @author sinaa
- * @version 1.0
+ * @version 1.1
  */
 abstract class Player {
 
@@ -69,10 +69,11 @@ abstract class Player {
     }
 
     /**
-     * Returns the next move made by the player based on the current game board
+     * Returns the index of the next move made by the player based on the
+     * current board
      *
-     * @param board The current status of the game board
-     * @return The chosen slot of the game board
+     * @param board The current game board
+     * @return The index of the player's next move
      */
-    abstract int nextMove(Board board);
+    abstract int getMove(Board board);
 }
