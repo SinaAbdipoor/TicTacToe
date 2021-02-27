@@ -69,11 +69,9 @@ abstract class Player {
     }
 
     /**
-     * Returns the index of the next move made by the player based on the
-     * current board
+     * The player chooses one of the available slots and makes a move
      *
      * @param board The current game board
-     * @return The index of the player's next move
      */
-    abstract int getMove(Board board);
+    abstract void makeMove(Board board);
 }

@@ -1,5 +1,7 @@
 package tictactoe;
 
+import java.util.ArrayList;
+
 /**
  * This class represents the Tic-Tac-Toe's game board
  *
@@ -20,15 +22,6 @@ class Board {
         }
     }
 
-    /**
-     * Returns the game board
-     *
-     * @return Game board
-     */
-    char[] getGameBoard() {
-        return gameBoard;
-    }
-
     @Override
     public String toString() {
         return " " + gameBoard[0] + " | " + gameBoard[1] + " | " + gameBoard[2]
@@ -36,6 +29,21 @@ class Board {
                 + gameBoard[3] + " | " + gameBoard[4] + " | " + gameBoard[5]
                 + "\n-----------\n "
                 + gameBoard[6] + " | " + gameBoard[7] + " | " + gameBoard[8];
+    }
+
+    /**
+     * Returns all the indexes of the empty slots
+     *
+     * @return Empty slots indexes
+     */
+    ArrayList<Integer> getEmptySlots() {
+        ArrayList<Integer> index = new ArrayList<>();
+        for (int i = 0; i < gameBoard.length; i++) {
+            if (gameBoard[i] == ' ') {
+                index.add(i);
+            }
+        }
+        return index;
     }
 
     /**
