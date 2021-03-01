@@ -3,17 +3,17 @@ package tictactoe;
 import java.util.ArrayList;
 
 /**
- * This class represents the Tic-Tac-Toe's game board
+ * This class represents the Tic-Tac-Toe's game board.
  *
  * @author sinaa
- * @version 1.0
+ * @version 1.1
  */
 class Board {
 
     private final char[] gameBoard;
 
     /**
-     * This constructor creates and initializes an empty game board
+     * This constructor creates and initializes an empty game board.
      */
     Board() {
         gameBoard = new char[9];
@@ -32,7 +32,7 @@ class Board {
     }
 
     /**
-     * Returns all the indexes of the empty slots
+     * Returns all the indexes of the empty slots.
      *
      * @return Empty slots indexes
      */
@@ -47,7 +47,7 @@ class Board {
     }
 
     /**
-     * Fills one of the chosen slot (if available) with the player's label
+     * Fills one of the chosen slot (if available) with the player's label.
      *
      * @param index The index of the chosen slot
      * @param label The label of the player
@@ -55,16 +55,16 @@ class Board {
      */
     void chooseSlot(int index, char label) throws IllegalArgumentException {
         if (gameBoard[index] != ' ') {
-            throw new IllegalArgumentException("This slot is already taken");
+            throw new IllegalArgumentException("This slot is already taken.");
         }
         gameBoard[index] = label;
     }
 
     /**
-     * Returns the current game status
+     * Returns the current game status.
      *
-     * @return -1 if the game is not over yet; 0 if it's a draw; 1 if 'X' has
-     * won; 2 if 'O' has won
+     * @return -1 if the game is not over yet, 0 if it's a draw, 1 if 'X' has
+     * won, and 2 if 'O' has won
      */
     int gameStatus() {
         //Checking for a row winner

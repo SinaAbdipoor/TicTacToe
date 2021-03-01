@@ -1,15 +1,24 @@
 package tictactoe;
 
 /**
- * This is the main class where everything starts. It prints a few stuff and
- * then starts the game.
+ * This project is the implementation of Tic-Tac-Toe. It's a free software, and
+ * you're allowed to use, copy, or modify it however you want except for
+ * submitting it as your own. The AI bot of this project is based on Q-Learning
+ * (Reinforcement Learning).
  *
  * @author sinaa
- * @version 1.0
+ * @version 1.2
  */
 class Main {
 
+    /**
+     * This is the starting point of this project. It first prints some stuff,
+     * and then gathers the players and initiates the game.
+     *
+     * @param args No argument is needed
+     */
     public static void main(String[] args) {
+        throw new UnsupportedOperationException("The game is not ready yet.");
         printStuff();
     }
 

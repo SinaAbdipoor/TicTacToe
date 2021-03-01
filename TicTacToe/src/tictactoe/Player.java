@@ -13,7 +13,7 @@ abstract class Player {
     private int score;  //Player's score
 
     /**
-     * Constructor to create a player with the given name and label
+     * This constructor creates a player with the given name and label.
      *
      * @param name Player's name
      * @param label Player's label
@@ -21,15 +21,16 @@ abstract class Player {
      */
     Player(String name, char label) throws IllegalArgumentException {
         this.name = name;
-        if (label != 'X' || label != 'O') {
-            throw new IllegalArgumentException("Lable can only be 'X' or 'O'");
+        label = Character.toUpperCase(label);
+        if (label != 'X' && label != 'O') {
+            throw new IllegalArgumentException("Lable can only be 'X' or 'O'.");
         }
         this.label = label;
         score = 0;
     }
 
     /**
-     * Returns player's name
+     * Returns the player's name.
      *
      * @return Player name
      */
@@ -38,7 +39,7 @@ abstract class Player {
     }
 
     /**
-     * Returns player's label
+     * Returns the player's label.
      *
      * @return Player label (X or O)
      */
@@ -47,7 +48,7 @@ abstract class Player {
     }
 
     /**
-     * Returns the current score of the player
+     * Returns the current score of the player.
      *
      * @return Player score
      */
@@ -62,16 +63,17 @@ abstract class Player {
     }
 
     /**
-     * Adds one point to the player's score
+     * Adds one point to the player's score.
      */
     void addPoint() {
         score += 1;
     }
 
     /**
-     * The player chooses one of the available slots and makes a move
+     * The player chooses one of the available slots and returns the index.
      *
      * @param board The current game board
+     * @return The index of the chosen slot
      */
-    abstract void makeMove(Board board);
+    abstract int getMove(Board board);
 }
