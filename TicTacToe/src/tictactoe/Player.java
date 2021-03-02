@@ -4,7 +4,7 @@ package tictactoe;
  * This abstract class represents a general Tic-Tac-Toe player.
  *
  * @author sinaa
- * @version 1.1
+ * @version 1.2
  */
 abstract class Player {
 
@@ -58,8 +58,7 @@ abstract class Player {
 
     @Override
     public String toString() {
-        return "Player{" + "name=" + name + ", label=" + label
-                + ", score=" + score + '}';
+        return name + '(' + label + "), " + score + " points";
     }
 
     /**

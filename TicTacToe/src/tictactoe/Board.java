@@ -108,4 +108,13 @@ class Board {
         //Otherwise, it's a draw
         return 0;
     }
+
+    /**
+     * Resets the game board by filling all the slots with ' '.
+     */
+    void reset() {
+        for (int i = 0; i < gameBoard.length; i++) {
+            gameBoard[i] = ' ';
+        }
+    }
 }
