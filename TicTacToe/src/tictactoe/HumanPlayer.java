@@ -26,8 +26,8 @@ class HumanPlayer extends Player {
         int index;
         Scanner sc = new Scanner(System.in);
         do {
-            System.out.print(this.getName() + ", please choose one of the EMPTY"
-                    + " slots (1-9) as your next move: ");
+            System.out.print(this.getName() + '(' + this.getLabel() + "), please"
+                    + " choose one of the EMPTY slots (1-9) as your next move: ");
             //Making sure the input is a number
             while (!sc.hasNextInt()) {
                 System.out.print("That's not a number! Try again: ");

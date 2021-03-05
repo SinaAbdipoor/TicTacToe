@@ -7,7 +7,7 @@ import java.util.Random;
  * given players.
  *
  * @author sinaa
- * @version 1.0
+ * @version 1.1
  */
 class Game {
 
@@ -88,20 +88,32 @@ class Game {
     /**
      * Runs one full round of the game and returns the winner.
      *
-     * @return The winning player, null if it's a draw
+     * @param printInfo Determines if the board and game info should be printed
+     * or not (set false for training. Otherwise, set true)
+     * @return
      */
-    Player run() {
+    Player run(boolean printInfo) {
+        roundNo++;
         System.out.println(this);
-        System.out.println("Randomly choosing who should start the game...");
+        if (printInfo) {
+            System.out.println("Randomly choosing who should start the game...");
+        }
         while (board.gameStatus() == -1) { //While game is not over
-            System.out.println(board);
+            if (printInfo) {
+                System.out.println(board);
+            }
             Player playingPlayer = whoseTurn();
             int playerMove = playingPlayer.getMove(board);
-            System.out.println(playingPlayer.getName() + '(' + playingPlayer.getLabel()
-                    + ") chose " + (playerMove + 1) + '.');
+            if (printInfo) {
+                System.out.println(playingPlayer.getName() + '('
+                        + playingPlayer.getLabel() + ") chose "
+                        + (playerMove + 1) + '.');
+            }
             board.chooseSlot(playerMove, playingPlayer.getLabel());
         }
-        System.out.println(board);
+        if (printInfo) {
+            System.out.println(board);
+        }
         if (board.gameStatus() == 1) { //If 'X' is the winner, return the corresponding player
             if (player1.getLabel() == 'X') {
                 return player1;
@@ -124,5 +136,25 @@ class Game {
     void reset() {
         board.reset();
         turn = new Random().nextBoolean();
+    }
+
+    /**
+     * Returns the final results of the game.
+     *
+     * @return Summary string
+     */
+    String summary() {
+        String winner;
+        if (player1.getScore() > player2.getScore()) {
+            winner = "So {" + player1 + "} is the winner.";
+        } else if (player1.getScore() < player2.getScore()) {
+            winner = "So {" + player2 + "} is the winner.";
+        } else {
+            winner = "So it's a draw!";
+        }
+        return "Final results:\nTotal number of rounds played: " + roundNo
+                + "\n" + player1 + "\n" + player2 + "\nNumber of draws: "
+                + (roundNo - player1.getScore() - player2.getScore()) + "\n"
+                + winner;
     }
 }
