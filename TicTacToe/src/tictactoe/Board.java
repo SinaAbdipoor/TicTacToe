@@ -6,20 +6,28 @@ import java.util.ArrayList;
  * This class represents the Tic-Tac-Toe's game board.
  *
  * @author sinaa
- * @version 1.1
+ * @version 1.2
  */
 class Board {
 
-    private final char[] gameBoard;
+    private final char[] gameBoard = new char[9];
 
     /**
-     * This constructor creates and initializes an empty game board.
+     * This constructor initializes an empty game board.
      */
     Board() {
-        gameBoard = new char[9];
         for (int i = 0; i < gameBoard.length; i++) {
             gameBoard[i] = ' ';
         }
+    }
+
+    /**
+     * Returns the latest game board.
+     *
+     * @return Game board
+     */
+    char[] getGameBoard() {
+        return gameBoard;
     }
 
     @Override

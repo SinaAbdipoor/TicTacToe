@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  * This project is the implementation of Tic-Tac-Toe. It's a free software, and
- * you're allowed to use, copy, or modify it however you want except for
+ * you're allowed to use, copy, or modify it however you want, except for
  * submitting it as your own. The AI bot of this project is based on Q-Learning
  * (Reinforcement Learning).
  *
@@ -101,7 +101,6 @@ class Main {
     }
 
     private static char getOppositeLabel(char label) {
-        label = Character.toUpperCase(label);
         if (label == 'X') {
             return 'O';
         }
@@ -119,9 +118,8 @@ class Main {
     private static Player runGame(Game game, boolean printInfo) {
         System.out.println("---------------------------------------------------"
                 + "-----------------------------------------------------------");
-        Player winner;
         game.reset();
-        winner = game.run(printInfo);
+        Player winner = game.run(printInfo);
         if (winner == null) {
             System.out.println("It's a draw!");
             return winner;

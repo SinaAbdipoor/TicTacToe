@@ -77,6 +77,11 @@ class Game {
                 + "}, Player2 {" + player2 + '}';
     }
 
+    /**
+     * Returns the player whose turn is next.
+     *
+     * @return Player to play next
+     */
     Player whoseTurn() {
         turn = !turn;
         if (turn) {
@@ -146,11 +151,11 @@ class Game {
     String summary() {
         String winner;
         if (player1.getScore() > player2.getScore()) {
-            winner = "So {" + player1 + "} is the winner.";
+            winner = "So, {" + player1 + "} is the winner.";
         } else if (player1.getScore() < player2.getScore()) {
-            winner = "So {" + player2 + "} is the winner.";
+            winner = "So, {" + player2 + "} is the winner.";
         } else {
-            winner = "So it's a draw!";
+            winner = "So, it's a draw!";
         }
         return "Final results:\nTotal number of rounds played: " + roundNo
                 + "\n" + player1 + "\n" + player2 + "\nNumber of draws: "
