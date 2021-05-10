@@ -1,6 +1,9 @@
 package tictactoe;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * This project is the implementation of Tic-Tac-Toe. It's a free software, and
