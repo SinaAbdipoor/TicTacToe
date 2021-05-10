@@ -1,8 +1,11 @@
 package tictactoe;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,7 +14,7 @@ import java.util.logging.Logger;
  * Reinforcement Learning).
  *
  * @author sinaa
- * @version 0.1
+ * @version 1.0
  */
 class QTable {
 
@@ -87,14 +90,14 @@ class QTable {
         if (difficulty < 0 || difficulty > 4) {
             throw new IllegalArgumentException("Difficulty value must be between 0 and 4.");
         }
-        FileWriter writer;
+        FileWriter writer = null;
         try {
             switch (difficulty) {
                 case 0:
                     writer = new FileWriter(new File("difficulty\\Custom.txt"));
                     break;
                 case 1:
-                    writer = new FileWriter("difficulty\\Easy.txt");
+                    writer = new FileWriter(new File("difficulty\\Easy.txt"));
                     break;
                 case 2:
                     writer = new FileWriter(new File("difficulty\\Normal.txt"));
@@ -106,9 +109,58 @@ class QTable {
                     writer = new FileWriter(new File("difficulty\\Unbeatable.txt"));
                     break;
             }
+            for (int i = 0; i < 19683; i++) {
+                for (int j = 0; j < 9; j++) {
+                    writer.write(String.valueOf(table[i][j]) + "\t");
+                }
+                writer.write("\n");
+            }
+            writer.close();
         } catch (IOException ex) {
             System.err.println("ERROR in saving the difficulty.\n" + ex);
         }
-        //TODO
+    }
+
+    /**
+     * Loads the saved difficulty files in the q-table.
+     *
+     * @param difficulty 0 -> loads the custom difficulty; 1 -> loads the easy
+     * difficulty; 2 -> loads the normal difficulty; 3 -> loads the hard
+     * difficulty; 4 -> loads the unbeatable difficulty.
+     * @throws IllegalArgumentException If the input difficulty is not between 0
+     * and 4
+     */
+    void load(int difficulty) throws IllegalArgumentException {
+        if (difficulty < 0 || difficulty > 4) {
+            throw new IllegalArgumentException("Difficulty value must be between 0 and 4.");
+        }
+        Scanner reader = null;
+        try {
+            switch (difficulty) {
+                case 0:
+                    reader = new Scanner(new File("difficulty\\Custom.txt"));
+                    break;
+                case 1:
+                    reader = new Scanner(new File("difficulty\\Easy.txt"));
+                    break;
+                case 2:
+                    reader = new Scanner(new File("difficulty\\Normal.txt"));
+                    break;
+                case 3:
+                    reader = new Scanner(new File("difficulty\\Hard.txt"));
+                    break;
+                case 4:
+                    reader = new Scanner(new File("difficulty\\Unbeatable.txt"));
+                    break;
+            }
+            for (int i = 0; i < 19683; i++) {
+                for (int j = 0; j < 9; j++) {
+                    table[i][j] = reader.nextDouble();
+                }
+            }
+            reader.close();
+        } catch (FileNotFoundException ex) {
+            System.err.println("ERROR in loading the difficulty.\n" + ex);
+        }
     }
 }
