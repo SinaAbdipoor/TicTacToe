@@ -67,7 +67,7 @@ public class Main {
         System.out.println("To start the game, please choose one of the options below:\n1) Play against a friend;" +
                 "\n2) Play against the stupid bot;\n3) Play against the smart bot;\n4) Train the bot (ADMINS ONLY).");
         do {
-            System.out.print("Please select the game mode (a number between 1 - 4): ");
+            System.out.print("Please select the game mode (a number between 1-4): ");
             // Making sure the input is a number.
             while (!scanner.hasNextInt()) {
                 System.out.print("That's not a number! Try again: ");

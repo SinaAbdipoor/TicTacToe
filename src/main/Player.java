@@ -72,7 +72,7 @@ abstract class Player {
      * Gets the next action from the player.
      *
      * @param board the current game board.
-     * @return the index of the slot chosen by the player (an integer between 0 - 8).
+     * @return the index of the slot chosen by the player (an integer between 0-8).
      */
     abstract int getMove(Board board);
 }
