@@ -6,7 +6,7 @@ import java.util.Scanner;
  * This is the main class. It prints some stuff, gets the game mode, and starts the game.
  *
  * @author Sina
- * @version 0.2
+ * @version 0.3
  */
 public class Main {
 
@@ -19,6 +19,19 @@ public class Main {
     public static void main(String[] args) {
         // Printing the initial information about the project.
         printStuff();
+        // Creating the appropriate players based on the input game mode.
+        switch (getGameMode()) {
+            case 1:
+                System.out.println("Selected game mode: 1) Play against a friend.");
+                break;
+            case 2:
+                System.out.println("Selected game mode: 2) Play against the stupid bot.");
+                break;
+            case 3:
+                throw new UnsupportedOperationException("Not supported yet.");
+            case 4:
+                throw new UnsupportedOperationException("Not supported yet.");
+        }
     }
 
     /**
@@ -45,13 +58,14 @@ public class Main {
 
     /**
      * Gets the game mode as an input from user.
+     *
      * @return the game mode.
      */
     private static int getGameMode() {
         int gameMode;
         Scanner scanner = new Scanner(System.in);
-        System.out.println("To start the game, please choose one of the options below:\n1) Play against a friend" +
-                "\n2) Play against the stupid bot\n3) Play against the smart bot\n4) Train the bot (ADMINS ONLY)");
+        System.out.println("To start the game, please choose one of the options below:\n1) Play against a friend;" +
+                "\n2) Play against the stupid bot;\n3) Play against the smart bot;\n4) Train the bot (ADMINS ONLY).");
         do {
             System.out.print("Please select the game mode (a number between 1 - 4): ");
             // Making sure the input is a number.
@@ -60,7 +74,7 @@ public class Main {
                 scanner.next();
             }
             gameMode = scanner.nextInt();
-        // Keep asking while the input is out of bound.
+            // Keep asking while the input is out of bound.
         } while (gameMode < 1 || gameMode > 4);
         return gameMode;
     }
