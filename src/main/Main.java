@@ -17,21 +17,25 @@ public class Main {
      * @param args is not needed.
      */
     public static void main(String[] args) {
+        final Game game;
         // Printing the initial information about the project.
         printStuff();
         // Creating the appropriate players based on the input game mode.
-        switch (getGameMode()) {
-            case 1:
-                System.out.println("Selected game mode: 1) Play against a friend.");
-                break;
-            case 2:
-                System.out.println("Selected game mode: 2) Play against the stupid bot.");
-                break;
-            case 3:
-                throw new UnsupportedOperationException("Not supported yet.");
-            case 4:
-                throw new UnsupportedOperationException("Not supported yet.");
-        }
+        game = createGame(getGameMode());
+        // Keep running the game
+        do {
+            System.out.println("---------------------------------------------------------------------------------------"
+                    + "----------------------------------------------------------------------------------------------");
+            Player winner = game.run();
+            if (winner == null) {
+                System.out.println("It's a draw!");
+            }
+            winner.addScore();
+            System.out.println(winner.getName() + " won this round.");
+        } while (cont());
+        System.out.println("-----------------------------------------------------------------------------------------" +
+                "------------------------------------------------------------------------------------------------------"
+                + "\n" + game.summary());
     }
 
     /**
@@ -77,5 +81,84 @@ public class Main {
             // Keep asking while the input is out of bound.
         } while (gameMode < 1 || gameMode > 4);
         return gameMode;
+    }
+
+    /**
+     * Creates and initiates a game with appropriate players based on the input game mode.
+     *
+     * @param gameMode mode of the game determining the appropriate players.
+     * @return an initiated game.
+     */
+    private static Game createGame(int gameMode) {
+        final Player player1 , player2;
+        if (gameMode == 1) {
+            System.out.println("Selected game mode: 1) Play against a friend.");
+            System.out.println("Player 1:");
+            player1 = new HumanPlayer(getPlayerName(), getPlayerLabel());
+            System.out.println("Player 2:");
+            player2 = new HumanPlayer(getPlayerName(), getOppositeLabel(player1.getLabel()));
+        } else if (gameMode == 2) {
+            System.out.println("Selected game mode: 2) Play against the stupid bot.");
+            throw new UnsupportedOperationException("Not implemented yet.");
+        } else if (gameMode == 3) {
+            throw new UnsupportedOperationException("Not implemented yet.");
+        } else if (gameMode == 4) {
+            throw new UnsupportedOperationException("Not implemented yet.");
+        } else {
+            player1 = null;
+            player2 = null;
+        }
+        return new Game(player1, player2);
+    }
+
+    /**
+     * Gets the player's name as an input.
+     *
+     * @return player's name.
+     */
+    private static String getPlayerName() {
+        System.out.print("Please enter your name: ");
+        return new Scanner(System.in).next();
+    }
+
+    /**
+     * Gets the player's label (X or O).
+     *
+     * @return player's label (X or O).
+     */
+    private static char getPlayerLabel() {
+        Scanner sc = new Scanner(System.in);
+        char label;
+        do {
+            System.out.print("Please enter your label (X or O): ");
+            label = Character.toUpperCase(sc.next().charAt(0));
+        } while (label != 'X' && label != 'O');
+        return label;
+    }
+
+    /**
+     * Gives the opposite label of the input label.
+     *
+     * @param label the input label.
+     * @return X if input label is O, O if input label is X.
+     */
+    private static char getOppositeLabel(char label) {
+        if (label == 'X') {
+            return 'O';
+        }
+        return 'X';
+    }
+
+    /**
+     * Checks to see if a new round should start.
+     *
+     * @return true if player wants another round and false otherwise.
+     */
+    private static boolean cont() {
+        System.out.print("Do you wish to continue ('y', 'n'): ");
+        if (new Scanner(System.in).next().equalsIgnoreCase("y")) {
+            return true;
+        }
+        return false;
     }
 }
