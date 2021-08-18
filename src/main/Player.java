@@ -4,7 +4,7 @@ package main;
  * This abstract class represents a general Tic-Tac-Toe player.
  *
  * @author Sina
- * @version 0.1
+ * @version 0.2
  */
 abstract class Player {
 
@@ -31,6 +31,7 @@ abstract class Player {
 
     /**
      * Returns the player's name.
+     *
      * @return player's name.
      */
     String getName() {
@@ -39,6 +40,7 @@ abstract class Player {
 
     /**
      * Returns the player's label (X or O).
+     *
      * @return player's label.
      */
     char getLabel() {
@@ -47,16 +49,22 @@ abstract class Player {
 
     /**
      * Returns the player's latest score.
+     *
      * @return player's score.
      */
     int getScore() {
         return score;
     }
 
+    @Override
+    public String toString() {
+        return name + " (" + label + "), Score: " + score;
+    }
+
     /**
      * Adds 1 point to the current score of the player.
      */
-    void addScore(){
+    void addScore() {
         score++;
     }
 
@@ -66,5 +74,5 @@ abstract class Player {
      * @param board the current game board.
      * @return the index of the slot chosen by the player (an integer between 0 - 8).
      */
-//TODO    abstract int getMove(Board board);
+    abstract int getMove(Board board);
 }
