@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * This class represents the board of the Tic-Tac-Toe game.
  *
  * @author Sina
- * @version 0.1
+ * @version 1.0
  */
 class Board {
 
@@ -72,8 +72,7 @@ class Board {
     /**
      * Returns the current game status.
      *
-     * @return -1 if the game is not over yet, 0 if it's a draw, 1 if 'X' has
-     * won, and 2 if 'O' has won.
+     * @return -1 if the game is not over yet, 0 if it's a draw, 1 if 'X' has won, and 2 if 'O' has won.
      */
     int gameStatus() {
         // Checking for a row winner.
@@ -99,8 +98,7 @@ class Board {
             }
         }
         // Checking for a diagonal winner.
-        if ((board[0] == board[4] && board[4] == board[8])
-                || (board[2] == board[4] && board[4] == board[6])) {
+        if ((board[0] == board[4] && board[4] == board[8]) || (board[2] == board[4] && board[4] == board[6])) {
             if (board[4] == 'X') {
                 return 1;
             }

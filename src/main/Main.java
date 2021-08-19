@@ -90,7 +90,7 @@ public class Main {
      * @return an initiated game.
      */
     private static Game createGame(int gameMode) {
-        final Player player1 , player2;
+        final Player player1, player2;
         if (gameMode == 1) {
             System.out.println("Selected game mode: 1) Play against a friend.");
             System.out.println("Player 1:");

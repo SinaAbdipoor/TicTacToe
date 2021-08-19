@@ -4,7 +4,7 @@ package main;
  * This abstract class represents a general Tic-Tac-Toe player.
  *
  * @author Sina
- * @version 0.2
+ * @version 1.0
  */
 abstract class Player {
 

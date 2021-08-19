@@ -6,7 +6,7 @@ import java.util.Random;
  * This class represents a game of Tic-Tac-Toe.
  *
  * @author Sina
- * @version 0.1
+ * @version 1.0
  */
 class Game {
 
@@ -119,10 +119,8 @@ class Game {
         } else {
             winner = "So, it's a draw!";
         }
-        return "Final results:\nTotal number of rounds played: " + roundNo
-                + "\n" + player1 + "\n" + player2 + "\nNumber of draws: "
-                + (roundNo - player1.getScore() - player2.getScore()) + "\n"
-                + winner;
+        return "Final results:\nTotal number of rounds played: " + roundNo + "\n" + player1 + "\n" + player2 +
+                "\nNumber of draws: " + (roundNo - player1.getScore() - player2.getScore()) + "\n" + winner;
     }
 
     /**

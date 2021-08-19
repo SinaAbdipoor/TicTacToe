@@ -6,7 +6,7 @@ import java.util.Scanner;
  * This class represents a human player playing Tic-Tac-Toe.
  *
  * @author Sina
- * @version 0.1
+ * @version 1.0
  */
 class HumanPlayer extends Player {
 
