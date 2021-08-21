@@ -22,7 +22,7 @@ public class Main {
         printStuff();
         // Creating the appropriate players based on the input game mode.
         game = createGame(getGameMode());
-        // Keep running the game
+        // Keep running the game.
         do {
             System.out.println("---------------------------------------------------------------------------------------"
                     + "----------------------------------------------------------------------------------------------");
